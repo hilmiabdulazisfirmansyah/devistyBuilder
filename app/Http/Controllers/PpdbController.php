@@ -43,7 +43,7 @@ class PpdbController extends Controller
         $ppdb->jenis_kelamin = $request->jenis_kelamin;
         $ppdb->agama = $request->agama;
         $ppdb->no_hp = $request->no_hp;
-        $ppdb->alamat_sekolah = $request->alamat_sekolah;
+        $ppdb->asal_sekolah = $request->asal_sekolah;
         $ppdb->nama_ayah = $request->nama_ayah;
         $ppdb->nama_ibu = $request->nama_ibu;
         $ppdb->jurusan = $request->jurusan;

@@ -58,7 +58,7 @@
                                 <input name="no_hp" type="text" class="form-control" placeholder="Nomor Handphone *" value="" required/>
                             </div>
                             <div class="form-group">
-                                <input name="alamat_sekolah" type="text" name="txtEmpPhone" class="form-control" placeholder="Asal Sekolah *" value="" required/>
+                                <input name="asal_sekolah" type="text" name="txtEmpPhone" class="form-control" placeholder="Asal Sekolah *" value="" required/>
                             </div>
 
                             <div class="form-group">

@@ -1,8 +1,8 @@
 @php
-$tables = new \App\Role;
+$tables = new \App\Ppdb;
 @endphp
 
-@modal(['type' => 'edit','ukuran'=>'biasa', 'id' => 'editrole', 'judul' => 'role'])
+@modal(['type' => 'edit','ukuran'=>'biasa', 'id' => 'editCpd', 'judul' => 'PPDB'])
 @modal(['type' => 'tambah','ukuran'=>'biasa', 'id' => 'tambahcpd', 'judul' => 'ppdb', 'action' => 'tambah'])
 
 <div class="container-fluid">
@@ -20,14 +20,18 @@ $tables = new \App\Role;
       <!-- Custom tabs (Charts with tabs)-->
 
       @table([
-        'judul'               => 'Daftar roles',
-        'columns'             => '3',
+        'judul'               => 'Daftar Calon Peserta Didik',
+        'columns'             => '4',
         'column1'             => 'No',
         'column2'             => 'Nama',
-        'column3'             => 'Action',
+        'column3'             => 'Asal Sekolah',
+        'column4'             => 'No Registrasi',
+        'column5'             => 'Action',
         'tables'              =>  $tables->all(),
         'data1'               => 'nama',
-        'target_edit'         => '#editrole',
+        'data2'               => 'asal_sekolah',
+        'data3'               => 'id',
+        'target_edit'         => '#editCpd',
         ])
         <!-- /.card -->
       </section>
