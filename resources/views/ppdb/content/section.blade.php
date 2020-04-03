@@ -1,5 +1,4 @@
 @include('ppdb.css.style')
-@include('ppdb.content.pamflet')
 
 <form action="{{ route('ppdb.store') }}" method="POST">
 @csrf
@@ -71,7 +70,7 @@
                             </div>
 
                             <div class="form-group">
-                                <select name="jurusan" class="form-control">
+                                <select id="jurusan" name="jurusan" class="form-control">
                                     <option class="hidden"  selected disabled>Pilihan Program Keahlian dan Kelas</option>
                                     <option value="TAV">Teknik Audio Video</option>
                                     <option value="TKR 1">Teknik Kendaraan Ringan 1</option>
@@ -82,20 +81,8 @@
                                     <option value="TKJ 4">Teknik Komputer dan Jaringan 4</option>
                                 </select>
                             </div>
-                            <p>Sisa Kuota Untuk Kelas ini :</p>
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default" style="background:#0062cc;color:white">Laki-Laki</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled value="10">
-                        </div>
-
-                        <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default" style="background: #dc3545;color:white">Perempuan</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled value="12">
-                        </div>
+                           
+                           @include('ppdb.content.kuota')
 
                         <input type="submit" class="btnRegister" value="Daftar" />
                     </div>

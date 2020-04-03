@@ -58,9 +58,43 @@ class PpdbController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($ppdb)
     {
-        //
+        switch ($ppdb) {
+            case 'TKR 1':
+            $xL = 40;
+            $xP = 40;
+            break;
+
+            case 'TKR 2':
+            $xL = 40;
+            $xP = 40;
+            break;
+            
+            default:
+            $xL = 20;
+            $xP = 20;
+            break;
+        }
+
+
+        $laki2 = Ppdb::where('jurusan',$ppdb)->where('jenis_kelamin','L')->get()->count();
+        $perempuan = Ppdb::where('jurusan',$ppdb)->where('jenis_kelamin','P')->get()->count();
+        
+        $kuota_L = $xL - $laki2;
+        $kuota_P = $xP - $perempuan;
+
+        if ($kuota_L <= 0) {
+            $kuota_L = 'Sudah Penuh';
+        }
+
+        if ($kuota_P <= 0) {
+            $kuota_P = 'Sudah Penuh';
+        }
+
+        $data = array('laki' => $kuota_L, 'perempuan' => $kuota_P);
+
+        return $data;
     }
 
     /**

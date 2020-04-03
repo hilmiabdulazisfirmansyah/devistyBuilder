@@ -1,4 +1,8 @@
 <style type="text/css">
+.kuota{
+    display: none;
+}
+
     .register{
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
     margin-top: 3%;
