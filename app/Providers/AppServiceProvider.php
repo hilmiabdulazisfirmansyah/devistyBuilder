@@ -29,5 +29,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::include('admin.component.tools','tools');
         Blade::include('admin.component.tables.index','table');
         Blade::include('admin.component.modal','modal');
+        Blade::include('admin.component.tables.menu','tableMenu');
+        Blade::include('admin.component.tables.users','tableUsers');
+        Blade::include('admin.component.tables.carousel','tableCarousel');
     }
 }

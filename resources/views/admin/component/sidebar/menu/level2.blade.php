@@ -7,21 +7,20 @@
             <i class="right fas fa-angle-left"></i>
           </p>
         </a>
-
         <ul class="nav nav-treeview">
           @php
-            $submenus = DB::table('submenus')->where([['menu_id','=', $level],['id','=',$submenu_id]])->get();
+            $submenus = DB::table('submenus')->where('menu_id',$id)->get();
           @endphp
 
           @foreach ($submenus as $submenu)
-          <li class="nav-item">
+          <li class="nav-item pl-3">
 
-            <a href="{{ url($role.$menu_head_link.$submenu->link) }}" class="nav-link 
-              @if(url()->current() == url($role.$menu_head_link.$submenu->link))
+            <a href="{{ url($role.$submenu->link) }}" class="nav-link 
+              @if(url()->current() == url($role.Str::singular($submenu->link)))
               active
               @endif">
 
-              <i class="far fa-circle nav-icon"></i>
+              <i class="nav-icon {{ $submenu->submenuicon }}"></i>
               <p>{{ $submenu->nama }}</p>
             </a>
           </li>

@@ -4,15 +4,33 @@
 
 @switch($ukuran)
 @case('besar')
-<input id="{{ $id }}" class="form-control form-control-lg" name="{{ $name }}" type="text" placeholder="{{ $placeholder }}" value=""/>
+<input id="{{ $id }}" class="form-control form-control-lg @error($name) is-invalid @enderror" name="{{ $name }}" type="text" placeholder="{{ $placeholder }}" value="{{ old($name) }}" required auto-complete="{{ $name }}" autofocus/><span id="{{ $id }}-alert-text" class="text-danger"></span>
+
+@error($name)
+<div id="{{ $id }}-alert" class="invalid-feedback" role="alert">
+	<strong>{{ $message }}</strong>
+</div>
+@enderror
 @break
 
 @case('kecil')
-<input id="{{ $id }}" class="form-control form-control-sm" name="{{ $name }}" type="text" placeholder="{{ $placeholder }}" value=""/>
+<input id="{{ $id }}" class="form-control form-control-sm @error($name) is-invalid @enderror" name="{{ $name }}" type="text" placeholder="{{ $placeholder }}" value="{{ old($name) }}" required auto-complete="{{ $name }}" autofocus/><span id="{{ $id }}-alert-text" class="text-danger"></span>
+
+@error($name)
+<div id="{{ $id }}-alert" class="invalid-feedback" role="alert">
+	<strong>{{ $message }}</strong>
+</div>
+@enderror
 @break
 
 @default
-<input id="{{ $id }}" class="form-control" type="text" name="{{ $name }}" placeholder="{{ $placeholder }}" value=""/>
+<input id="{{ $id }}" class="form-control @error($name) is-invalid @enderror" type="text" name="{{ $name }}" placeholder="{{ $placeholder }}" value="{{ old($name) }}" required auto-complete="{{ $name }}" autofocus/><span id="{{ $id }}-alert-text" class="text-danger"></span>
+
+@error($name)
+<div id="{{ $id }}-alert" class="invalid-feedback" role="alert">
+	<strong>{{ $message }}</strong>
+</div>
+@enderror
 @endswitch
 {{-- end switch ukuran --}}
 @break
@@ -29,6 +47,12 @@
 @case('tambah')
 
 @include('admin.component.button.tambah')
+
+@break
+
+@case('tambah-modal')
+
+@include('admin.component.button.tambah-modal')
 
 @break
 
@@ -52,6 +76,17 @@
 </select>
 @break
 {{-- break case select --}}
+
+@case('icon-picker')
+<input id="{{ $id }}" data-placement="bottomRight" class="form-control icp icp-auto @error($name) is-invalid @enderror" type="text" name="{{ $name }}" placeholder="{{ $placeholder }}" value="{{ old($name) }}" required auto-complete="{{ $name }}" autofocus/><span id="{{ $id }}-alert-text" class="text-danger"></span><span class="input-group-addon"></span>
+
+@error($name)
+<div id="{{ $id }}-alert" class="invalid-feedback" role="alert">
+	<strong>{{ $message }}</strong>
+</div>
+@enderror
+@break
+{{-- break case icon-picker --}}
 @default
 
 @endswitch

@@ -63,6 +63,24 @@ return [
             ]) : [],
         ],
 
+        'web' => [
+            'driver'    => env('DB_CONNECTION_WEB'),
+            'host'      => env('DB_HOST_WEB'),
+            'port'      => env('DB_PORT_WEB'),
+            'database'  => env('DB_DATABASE_WEB'),
+            'username'  => env('DB_USERNAME_WEB'),
+            'password'  => env('DB_PASSWORD_WEB'),
+        ],
+
+        'smk' => [
+            'driver'    => env('DB_CONNECTION_SMK'),
+            'host'      => env('DB_HOST_SMK'),
+            'port'      => env('DB_PORT_SMK'),
+            'database'  => env('DB_DATABASE_SMK'),
+            'username'  => env('DB_USERNAME_SMK'),
+            'password'  => env('DB_PASSWORD_SMK'),
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),

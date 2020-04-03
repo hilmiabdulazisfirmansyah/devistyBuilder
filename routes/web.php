@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,25 +12,186 @@
 */
 Auth::routes();
 
-Route::get('/', function() {
-	return View('welcome');
+Route::group(['prefix' => '/'], function(){
+	Route::get('/', 'WebsiteController@index')->name('home');
+	Route::get('mpd',function(){
+		return view('mpd.login');
+	});
+	Route::get('dapo',function(){
+		return view('dapo.index');
+	});
+
+	Route::get('classroom', function(){
+		return view('google.classroom');
+	});
+
+	Route::resource('ppdb', 'PpdbController');
 });
 
 
 Route::resource('admin', 'AdminController')->middleware('auth');
+Route::resource('users', 'AdminController');
+Route::resource('guru', 'AdminController');
+
 
 Route::group(['prefix' => 'admin'], function (){
+
 	Route::group(['prefix' => 'settings'], function(){
-			Route::resource('menus', 'MenuController');
+		Route::resource('menus', 'MenuController');
+		Route::resource('submenus', 'SubmenuController');
 	});
+
+	Route::group(['prefix' => 'users'], function(){
+		Route::resource('users','UserController');
+	});
+
+	Route::resource('website', 'AdminWebsiteController');
+	Route::resource('profiles', 'AdminWebsiteController');
+
+	Route::resource('roles','RoleController');
 });
 
 Route::get('/dapodik', function(){
 	return View('test.loginDapodikOnline');
 });
 
-Route::get('search', function(){
+Route::get('cari', function(){
 	return View('test.search');
 });
 
+Route::get('search', function(Request $request){
+	$nama = $request->input('nama');
+	return View('test.siswa',compact('nama'));
+})->name('search');
+
+Route::get('search/{nama}/edit', function($nama){
+	$ip_dapodik = 'smkaloer.online';
+
+	$url = 'http://'.$ip_dapodik.':5774/rest/PesertaDidik?_dc=1583420967534&nama='.$nama.'&sekolah_id=07275a29-4663-4642-bee0-823762714895&pd_module=pdterdaftar&limit=25&ascending=nama&page=1&start=0';
+
+	$cookie = "cookie.txt";
+
+	$curl = curl_init();
+	curl_setopt_array($curl, array(
+		CURLOPT_URL => $url,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_COOKIEFILE => $cookie,
+		CURLOPT_POST => 0,
+	));
+
+	$data = curl_exec($curl);
+	$err = curl_error($curl);
+
+	curl_close($curl);
+
+	if ($err) {
+		echo "cURL Error #:" . $err;
+	} else {
+		$data = json_decode($data, true);
+		return $data['rows'][0];
+	}
+
+	// $url2 = 'http://'.$ip_dapodik.':5774/rest/PesertaDidikLongitudinal?_dc=1583488015929&peserta_didik_id='.$peserta_didik_id.'&page=1&start=0&limit=50';
+	
+	// edit_siswa($ip_dapodik,$url2);
+
+})->name('search.edit.nama');
+
+Route::get('search/lainnya/{peserta_didik_id}/edit', function($peserta_didik_id){
+	$ip_dapodik = 'smkaloer.online';
+
+	$url = 'http://'.$ip_dapodik.':5774/rest/PesertaDidikLongitudinal?_dc=1583488015929&peserta_didik_id='.$peserta_didik_id.'&page=1&start=0&limit=50';
+
+	$cookie = "cookie.txt";
+
+	$curl = curl_init();
+	curl_setopt_array($curl, array(
+		CURLOPT_URL => $url,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_COOKIEFILE => $cookie,
+		CURLOPT_POST => 0,
+	));
+
+	$data = curl_exec($curl);
+	$err = curl_error($curl);
+
+	curl_close($curl);
+
+	if ($err) {
+		echo "cURL Error #:" . $err;
+	} else {
+		$data = json_decode($data, true);
+		return $data['rows'][0];
+	}
+
+	// $url2 = 'http://'.$ip_dapodik.':5774/rest/PesertaDidikLongitudinal?_dc=1583488015929&peserta_didik_id='.$peserta_didik_id.'&page=1&start=0&limit=50';
+	
+	// edit_siswa($ip_dapodik,$url2);
+
+})->name('search.edit.pd');
+
+Route::PUT('siswa/{peserta_didik_id}', function(Request $request, $peserta_didik_id){
+
+	$data1 = array(
+		'tinggi_badan' => $request->input('tinggi_badan'), 
+		'berat_badan' => $request->input('berat_badan'), 
+		'lingkar_kepala' => $request->input('lingkar_kepala'), 
+		'jarak_rumah_ke_sekolah' => $request->input('jarak_rumah_ke_sekolah'), 
+		'jarak_rumah_ke_sekolah_km' => $request->input('jarak_rumah_ke_sekolah_km'), 
+		'waktu_tempuh_ke_sekolah' => $request->input('waktu_tempuh_ke_sekolah'), 
+		'menit_tempuh_ke_sekolah' => $request->input('menit_tempuh_ke_sekolah'), 
+		'jumlah_saudara_kandung' => $request->input('jumlah_saudara_kandung'), 
+	);
+
+	$data1_json = json_encode($data1);
+
+	$data2 = array(
+		'email' => $request->input('email'), 
+		'no_kk' => $request->input('no_kk'), 
+		'alamat_jalan' => $request->input('alamat_jalan'), 
+		'rt' => $request->input('rt'), 
+		'rw' => $request->input('rw'), 
+		'desa_kelurahan' => $request->input('desa_kelurahan'), 
+		'nomor_telepon_seluler' => $request->input('nomor_telepon_seluler'), 
+	);
+
+	$data2_json = json_encode($data2);
+
+	$url1 = 'http://smkaloer.online:5774/rest/PesertaDidikLongitudinal/'.$peserta_didik_id.'%3A20192?_dc=1583484799153';
+	$url2 = 'http://smkaloer.online:5774/rest/PesertaDidik/'.$peserta_didik_id.'?_dc=1583498668521&sekolah_id=07275a29-4663-4642-bee0-823762714895&pd_module=pdterdaftar&limit=25&ascending=nama';
+
+	$cookie = "cookie.txt";
+
+	$ch2 = curl_init();
+
+	curl_setopt($ch2, CURLOPT_URL, $url2);
+	curl_setopt($ch2, CURLOPT_COOKIEFILE, $cookie);
+	curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch2, CURLOPT_CUSTOMREQUEST, "PUT");
+	curl_setopt($ch2, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Content-Length: ' . strlen($data2_json)));
+	curl_setopt($ch2, CURLOPT_POSTFIELDS, $data2_json);
+
+	$response = curl_exec($ch2);
+
+	$ch1 = curl_init();
+
+	curl_setopt($ch1, CURLOPT_URL, $url1);
+	curl_setopt($ch1, CURLOPT_COOKIEFILE, $cookie);
+	curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch1, CURLOPT_CUSTOMREQUEST, "PUT");
+	curl_setopt($ch1, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Content-Length: ' . strlen($data1_json)));
+	curl_setopt($ch1, CURLOPT_POSTFIELDS, $data1_json);
+
+	$response = curl_exec($ch1);
+
+	return back();
+
+})->name('siswa.update');
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('postingan','PostsController');
+
+Route::get('icon', function(){
+	return View('test.iconpicker');
+});

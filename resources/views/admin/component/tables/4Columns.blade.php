@@ -19,21 +19,32 @@
         <tr>
           <th style="width: 10px">{{ $column1 }}</th>
           <th>{{ $column2 }}</th>
-          <th>{{ $column3 }}</th>
-          <th style="width: 40px">{{ $column4 }}</th>
+          <th style="text-align: center;">{{ $column3 }}</th>
+          <th style="text-align: center;">{{ $column4 }}</th>
         </tr>
       </thead>
       <tbody>
+
+        @foreach ($tables as $table)
         <tr>
-          <td>1.</td>
-          <td>Update software</td>
-          <td>
-            <div class="progress progress-xs">
-              <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-            </div>
+          <td>{{ $loop->iteration }}</td>
+          <td>{{ $table->$data1 }}</td>
+          <td class="text-center">{{ $table->$data2 }}</td>
+
+          @if ($column4 != 'Action')
+          <td>{{ $table->data3 }}</td>
+          @endif
+          
+          <td style="text-align: center;">
+            
+            @input(['type' => 'button', 'action' => 'edit', 'ukuran' => 'kecil', 'name' => 'edit', 'target_edit' => $target_edit, 'data_id' => $table->id])
+
+            @input(['type' => 'button', 'action' => 'hapus', 'ukuran' => 'kecil', 'name' => 'hapus', 'data_id' => $table->id])
+
           </td>
-          <td><span class="badge bg-danger">55%</span></td>
         </tr>
+        @endforeach
+
       </tbody>
     </table>
   </div>

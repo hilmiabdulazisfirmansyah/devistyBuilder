@@ -17,7 +17,7 @@
       </div>
       <div class="info">
         {{-- auth User name --}}
-        <a href="#" class="d-block">{{ Auth::user()->name }}</a> 
+        <a href="#" class="d-block">{{ substr(Auth::user()->name, 0, 18) }}</a> 
       </div>
     </div>
 
@@ -26,11 +26,21 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-           <li class="nav-header">PANEL ADMIN</li>
+           <li class="nav-header">PANEL {{ strToupper(\App\Role::find(Auth::user()->role_id)->nama) }}</li>
 
+           @switch(Auth::user()->role_id)
+           @case(1)
            @php
            $menus = DB::table('menus')->get();
            @endphp
+           @break
+
+           @default
+           @php
+           $menus = DB::table('menus')->where('role_id',3)->get();
+           @endphp
+           @endswitch
+
 
            @foreach ($menus as $menu)
            @if ($menu->menulevel_id == '1')
@@ -51,23 +61,26 @@
               'menu_head_link'  =>  $menu->link,
               'role'            =>  $role,
               'icon'            =>  $menu->icon,
+              'id'              =>  $menu->id,
               ])
-            @endif
-            @endforeach
+              @endif
+              @endforeach
 
-            @foreach ($menus as $menu)
-            @if ($menu->menulevel_id == '3')
-            @include('admin.component.sidebar.menu.level3',[
-              'menu_head' =>  $menu->nama,
-              'level'     =>  $menu->menulevel_id,
-              ])
-            @endif
-            @endforeach
+              @foreach ($menus as $menu)
+              @if ($menu->menulevel_id == '3')
+              @include('admin.component.sidebar.menu.level3',[
+                'menu_head' =>  $menu->nama,
+                'level'     =>  $menu->menulevel_id,
+                ])
+                @endif
+                @endforeach
+                {{-- end if role --}}
+                @include('admin.component.sidebar.menu.logout')
 
 
-            </ul>
-          </nav>
-          <!-- /.sidebar-menu -->
-        </div>
-        <!-- /.sidebar -->
-      </aside>
+              </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+          </div>
+          <!-- /.sidebar -->
+        </aside>
