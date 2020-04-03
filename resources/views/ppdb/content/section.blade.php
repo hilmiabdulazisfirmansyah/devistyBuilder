@@ -87,7 +87,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default" style="background:#0062cc;color:white">Laki-Laki</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled value="32">
+                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" disabled value="10">
                         </div>
 
                         <div class="input-group mb-3">
