@@ -8,7 +8,7 @@
                     <div class="caption">
                          <div class="container">
                               <div class="col-md-8 col-sm-12">
-
+                                   <a href="{{ url('ppdb') }}" class="section-btn">Daftar Sekarang</a>
                               </div>
                          </div>
                     </div>
