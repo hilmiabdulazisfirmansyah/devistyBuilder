@@ -49,7 +49,9 @@ class PpdbController extends Controller
         $ppdb->jurusan = $request->jurusan;
         $ppdb->save();
 
-        return View('ppdb.sukses');
+        $nomor_registrasi = $ppdb->id;
+
+        return View('ppdb.sukses',compact('nomor_registrasi'));
     }
 
     /**

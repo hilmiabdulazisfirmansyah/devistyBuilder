@@ -37,7 +37,7 @@
                                         <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;"> <img src="https://img.icons8.com/carbon-copy/100/000000/checked-checkbox.png" width="125" height="120" style="display: block; border: 0px;" /><br>
                                             <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">Anda telah terdaftar sebagai siswa / siswi baru di SMK ALOER WARGAKUSUMAH dengan :</p>
                                             <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">Nomor Registrasi</p>
-                                            <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;border:1px solid black;padding: 1rem"> 1 </h2>
+                                            <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;border:1px solid black;padding: 1rem"> {{ $nomor_registrasi }} </h2>
                                         </td>
                                     </tr>
                                     <tr>
