@@ -177,7 +177,6 @@ loginDapodikOnline();
 				$('#nomor_telepon_seluler').val(data.nomor_telepon_seluler);
 				$('#tinggi_badan').val(data.tinggi_badan);
 				$('#berat_badan').val(data.berat_badan);
-				$('#lingkar_kepala').val(data.lingkar_kepala);
 				$('#jarak_rumah_ke_sekolah select').val(data.jarak_rumah_kesekolah);
 				$('#jarak_rumah_ke_sekolah_km').val(data.jarak_rumah_kesekolah_km);
 				$('#waktu_tempuh_ke_sekolah').val(data.waktu_tempuh_ke_sekolah);
