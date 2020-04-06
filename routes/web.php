@@ -159,7 +159,7 @@ Route::PUT('siswa/{peserta_didik_id}', function(Request $request, $peserta_didik
 	$data2_json = json_encode($data2);
 
 	$url1 = 'http://smkaloerwargakusumah.sch.id:5774/rest/PesertaDidikLongitudinal/'.$peserta_didik_id.'%3A20192?_dc=1583484799153';
-	$url2 = 'http://smkaloer.online:5774/rest/PesertaDidik/'.$peserta_didik_id.'?_dc=1583498668521&sekolah_id=07275a29-4663-4642-bee0-823762714895&pd_module=pdterdaftar&limit=25&ascending=nama';
+	$url2 = 'http://smkaloerwargakusumah.sch.id:5774/rest/PesertaDidik/'.$peserta_didik_id.'?_dc=1583498668521&sekolah_id=07275a29-4663-4642-bee0-823762714895&pd_module=pdterdaftar&limit=25&ascending=nama';
 
 	$cookie = "cookie.txt";
 
