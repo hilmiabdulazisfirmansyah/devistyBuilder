@@ -99,7 +99,7 @@ Route::get('search/{nama}/edit', function($nama){
 })->name('search.edit.nama');
 
 Route::get('search/lainnya/{peserta_didik_id}/edit', function($peserta_didik_id){
-	$ip_dapodik = 'smkaloerwargakusumasmkaloerwargakusumah.sch.id';
+	$ip_dapodik = 'smkaloerwargakusumah.sch.id';
 
 	$url = 'http://'.$ip_dapodik.':5774/rest/PesertaDidikLongitudinal?_dc=1583488015929&peserta_didik_id='.$peserta_didik_id.'&page=1&start=0&limit=50';
 
