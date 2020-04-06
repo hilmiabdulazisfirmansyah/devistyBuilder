@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ppdb;
+use DB;
 
 class PpdbController extends Controller
 {
@@ -131,5 +132,37 @@ class PpdbController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function cari(Request $request)
+    {
+
+        $query = $request->get('query');
+        if ($query == '') 
+        {
+            $data = Ppdb::all();
+        }
+        else
+        {
+            $data = DB::connection('smk')
+            ->table('ppdb')
+            ->where('nama', 'like', '%'.$query.'%')
+            ->orWhere('id', 'like', '%'.$query.'%')
+            ->get();
+        }
+
+        $total_row = $data->count();
+        $no = 1;
+
+        foreach ($data as $row) 
+        {
+
+            $output = '<tr><td>'.$no.'</td><td>'.$row->nama.'</td><td class="text-center">'.$row->asal_sekolah.'</td>
+            <td class="text-center">'.$row->id.'</td><td style="text-align: center;"><button id="edit" type="button" class="btn btn-info fa fa-edit" data-toggle="modal" data-target="'.$row->id.'"></button><button id="hapus" type="button" class="btn btn-danger fas fa-trash-alt" data-id="'.$row->id.'"></button></td></tr>';
+            $output[] = array('table_data' => $output);
+            return $output;
+        }
+
+
     }
 }

@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin'], function (){
 	Route::resource('profiles', 'AdminWebsiteController');
 
 	Route::resource('roles','RoleController');
+	Route::GET('ppdb/cari','PpdbController@cari')->name('ppdb.cari');
 });
 
 Route::get('/dapodik', function(){
@@ -65,7 +66,7 @@ Route::get('search', function(Request $request){
 })->name('search');
 
 Route::get('search/{nama}/edit', function($nama){
-	$ip_dapodik = 'smkaloer.online';
+	$ip_dapodik = '192.168.100.6';
 
 	$url = 'http://'.$ip_dapodik.':5774/rest/PesertaDidik?_dc=1583420967534&nama='.$nama.'&sekolah_id=07275a29-4663-4642-bee0-823762714895&pd_module=pdterdaftar&limit=25&ascending=nama&page=1&start=0';
 
@@ -98,7 +99,7 @@ Route::get('search/{nama}/edit', function($nama){
 })->name('search.edit.nama');
 
 Route::get('search/lainnya/{peserta_didik_id}/edit', function($peserta_didik_id){
-	$ip_dapodik = 'smkaloer.online';
+	$ip_dapodik = '192.168.100.6';
 
 	$url = 'http://'.$ip_dapodik.':5774/rest/PesertaDidikLongitudinal?_dc=1583488015929&peserta_didik_id='.$peserta_didik_id.'&page=1&start=0&limit=50';
 
@@ -157,7 +158,7 @@ Route::PUT('siswa/{peserta_didik_id}', function(Request $request, $peserta_didik
 
 	$data2_json = json_encode($data2);
 
-	$url1 = 'http://smkaloer.online:5774/rest/PesertaDidikLongitudinal/'.$peserta_didik_id.'%3A20192?_dc=1583484799153';
+	$url1 = 'http://192.168.100.6:5774/rest/PesertaDidikLongitudinal/'.$peserta_didik_id.'%3A20192?_dc=1583484799153';
 	$url2 = 'http://smkaloer.online:5774/rest/PesertaDidik/'.$peserta_didik_id.'?_dc=1583498668521&sekolah_id=07275a29-4663-4642-bee0-823762714895&pd_module=pdterdaftar&limit=25&ascending=nama';
 
 	$cookie = "cookie.txt";

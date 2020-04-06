@@ -14,5 +14,9 @@
 	@include('admin.component.tables.4Columns')
 	@break
 
+	@case('5')
+	@include('admin.component.tables.5Columns')
+	@break
+
 	@default
 @endswitch

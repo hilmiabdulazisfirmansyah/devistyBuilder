@@ -7,13 +7,18 @@ $tables = new \App\Ppdb;
 
 <div class="container-fluid">
   {{-- widget --}}
-  
+  <div class="input-group input-group-sm">
+    <input id="search" name="search" type="text" class="form-control" placeholder="Cari Nama / No Registrasi">
+    <span class="input-group-append">
+      <button id="cari" type="button" class="btn btn-info btn-flat">Cari</button>
+    </span>
+  </div>
   <!-- /.row -->
   <!-- Main row -->
   <div class="row">
     <!-- Left col -->
     <div class="form-group col-lg-2">
-      @input(['type' => 'button','action' => 'tambah-modal', 'ukuran' => 'kecil', 'name' => 'Tambah Calon PD', 'target' => '#tambahcpd'])
+      {{-- @input(['type' => 'button','action' => 'tambah-modal', 'ukuran' => 'kecil', 'name' => 'Tambah Calon PD', 'target' => '#tambahcpd']) --}}
     </div>
 
     <section class="col-lg-12 connectedSortable">
@@ -21,7 +26,7 @@ $tables = new \App\Ppdb;
 
       @table([
         'judul'               => 'Daftar Calon Peserta Didik',
-        'columns'             => '4',
+        'columns'             => '5',
         'column1'             => 'No',
         'column2'             => 'Nama',
         'column3'             => 'Asal Sekolah',
@@ -91,6 +96,25 @@ $tables = new \App\Ppdb;
           };
         },
       });
+    });
+
+    fetch_data();
+
+    function fetch_data(query = ''){
+      $.ajax({
+          url: "{{ route('ppdb.cari') }}",
+          method: 'GET',
+          data:{query:query},
+          dataType:'json',
+          success:function(data){
+            $('tbody').html(data.table_data);
+          }
+      })
+    }
+
+    $(document).on('keyup', '#search', function(){
+      var query = $(this).val();
+      fetch_data(query);
     });
 
     function refreshPage() {

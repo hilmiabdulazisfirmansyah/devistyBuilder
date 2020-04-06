@@ -1,5 +1,5 @@
 <!-- jQuery -->
-<script src="{{ asset('adminLTE/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('adminLTE/plugins/jquery/jquery.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{ asset('adminLTE/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
