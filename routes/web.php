@@ -56,9 +56,7 @@ Route::get('/dapodik', function(){
 	return View('test.loginDapodikOnline');
 });
 
-Route::get('cari', function(){
-	return View('test.search');
-});
+
 
 Route::get('search', function(Request $request){
 	$nama = $request->input('nama');
