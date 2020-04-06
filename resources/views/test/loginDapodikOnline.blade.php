@@ -2,7 +2,7 @@
 
 @php
 function loginDapodikOnline(){
-	$ip_dapodik = '192.168.100.6';
+	$ip_dapodik = 'smkaloerwargakusumah.sch.id';
 	$username = 'dedeheryanto15@gmail.com';
 	$password = 'Samrat235';
 	$semester_id = '20192';
@@ -48,7 +48,7 @@ function loginDapodikOnline(){
 // Start Grab
 function siswa($nama)
 {
-	$ip_dapodik = '192.168.100.6';
+	$ip_dapodik = 'smkaloerwargakusumah.sch.id';
 	$url = 'http://'.$ip_dapodik.':5774/rest/PesertaDidik?_dc=1583223205047&sekolah_id=07275a29-4663-4642-bee0-823762714895&pd_module=pdterdaftar&limit=1000000&ascending=nama&page=1&start=0';
 
 	$cookie = "cookie.txt";
