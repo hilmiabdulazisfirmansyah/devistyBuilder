@@ -10,7 +10,7 @@ $tables = new \App\Guru;
   
 
     <div class="form-group col-lg-2">
-      <button id="tarik_data" class="btn btn-primary"><i id="load" class="fas fa-sync"></i> Tarik Data</a>
+      <button id="tarik_data" class="btn btn-primary"><i id="load" class="fas fa-sync"></i>  Tarik Data</a>
     </div>
   <!-- /.row -->
    
