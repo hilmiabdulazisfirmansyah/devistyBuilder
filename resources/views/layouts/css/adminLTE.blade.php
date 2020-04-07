@@ -22,3 +22,4 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('adminLTE/plugins/select2/css/select2.min.css') }}">
 {{-- bootstrap icon picker --}}
 <link rel="stylesheet" href="{{ asset('iconpicker/css/bootstrap-iconpicker.min.css') }}"/>
+<link href="{{ asset('datepicker/css/bootstrap-datepicker.css') }}" rel="stylesheet">

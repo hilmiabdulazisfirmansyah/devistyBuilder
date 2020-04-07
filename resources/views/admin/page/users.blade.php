@@ -13,7 +13,7 @@ $tables = new \App\User;
   <div class="row">
     <!-- Left col -->
     <div class="form-group col-lg-2">
-      {{-- @input(['type' => 'button','action' => 'tambah-modal', 'ukuran' => 'kecil', 'name' => 'Tambah User', 'target' => '#tambahUser']) --}}
+      @input(['type' => 'button','action' => 'tambah-modal', 'ukuran' => 'kecil', 'name' => 'Tambah User', 'target' => '#tambahUser'])
     </div>
 
     <section class="col-lg-12 connectedSortable">

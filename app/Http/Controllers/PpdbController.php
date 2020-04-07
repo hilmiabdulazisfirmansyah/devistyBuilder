@@ -38,6 +38,7 @@ class PpdbController extends Controller
     {
         $ppdb = new Ppdb;
         $ppdb->nama = $request->nama;
+        $ppdb->nisn = $request->nisn;
         $ppdb->alamat = $request->alamat;
         $ppdb->tempat_lahir = $request->tempat_lahir;
         $ppdb->tanggal_lahir = $request->tanggal_lahir;
@@ -106,9 +107,10 @@ class PpdbController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($ppdb)
     {
-        //
+         $data = Ppdb::find($ppdb);
+        return $data;
     }
 
     /**
@@ -118,9 +120,24 @@ class PpdbController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $ppdb)
     {
-        //
+        $ppdb = Ppdb::find($ppdb);
+        $ppdb->nama = $request->input('nama');
+        $ppdb->nisn = $request->input('nisn');
+        $ppdb->jenis_kelamin = $request->input('jenis_kelamin');
+        $ppdb->tempat_lahir = $request->input('tempat_lahir');
+        $ppdb->alamat = $request->input('alamat');
+        $ppdb->tanggal_lahir = $request->input('tanggal_lahir');
+        $ppdb->agama = $request->input('agama');
+        $ppdb->no_hp = $request->input('no_hp');
+        $ppdb->asal_sekolah = $request->input('asal_sekolah');
+        $ppdb->nama_ayah = $request->input('nama_ayah');
+        $ppdb->nama_ibu = $request->input('nama_ibu');
+        $ppdb->jurusan = $request->input('jurusan');
+        $ppdb->save();
+
+        return back();
     }
 
     /**
@@ -129,40 +146,33 @@ class PpdbController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ppdb)
     {
-        //
+       $ppdb = Ppdb::find($ppdb);
+       $ppdb->delete();
+
+       return response()->json([
+        'success' => 'Data Berhasil Dihapus'
+    ]);
     }
 
     public function cari(Request $request)
     {
 
         $query = $request->get('query');
-        if ($query == '') 
-        {
-            $data = Ppdb::all();
-        }
-        else
-        {
+        if ($query != '') {
             $data = DB::connection('smk')
-            ->table('ppdb')
-            ->where('nama', 'like', '%'.$query.'%')
-            ->orWhere('id', 'like', '%'.$query.'%')
-            ->get();
+                ->table('ppdb')
+                ->where('nama', 'like', '%'.$query.'%')
+                ->orWhere('id', 'like', '%'.$query.'%')
+                ->get();
+        }else{
+            $data = DB::connection('smk')
+                ->table('ppdb')
+                ->get();
         }
-
-        $total_row = $data->count();
-        $no = 1;
-
-        foreach ($data as $row) 
-        {
-
-            $output = '<tr><td>'.$no.'</td><td>'.$row->nama.'</td><td class="text-center">'.$row->asal_sekolah.'</td>
-            <td class="text-center">'.$row->id.'</td><td style="text-align: center;"><button id="edit" type="button" class="btn btn-info fa fa-edit" data-toggle="modal" data-target="'.$row->id.'"></button><button id="hapus" type="button" class="btn btn-danger fas fa-trash-alt" data-id="'.$row->id.'"></button></td></tr>';
-            $output[] = array('table_data' => $output);
-            return $output;
-        }
-
+       
+        return $data;
 
     }
 }

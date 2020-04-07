@@ -70,7 +70,7 @@
 {{-- break case button --}}
 @case('select')
 <select id="{{ $id }}" class="form-control" name="{{ $name }}" style="width: 100%">
-	<option>Pilih Jarak</option>
+	<option selected disabled>Pilih :</option>
 	@foreach ($options as $option)
 		<option value="{{ $option->$value1 }}">{{ $option->$value2 }}</option>
 	@endforeach

@@ -118,13 +118,13 @@
                                                         <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
                                                             <p style="font-weight: 800;">Terima Kasih,</p>
                                                             <p>telah mendaftarkan diri anda di <br><b>SMK ALOER WARGAKUSUMAH</b></p>
+                                                   <a href="#" onclick="history.go(-1)"> Kembali ke Halaman sebelumnya</a>
                                                         </td>
                                                     </tr>
                                                 </table>
                                             </div>
                                             <div style="display:inline-block; max-width:50%; min-width:240px; vertical-align:top; width:100%;">
                                                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
-                                                   
                                                 </table>
                                             </div>
                                         </td>
@@ -136,6 +136,7 @@
                 </td>
             </tr>
         </table>
+
     </body>
 
     </html>

@@ -23,6 +23,9 @@
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group">
+                                <input name="nisn" type="text" class="form-control" placeholder="NISN *" value="" required/>
+                            </div>
+                            <div class="form-group">
                                 <input name="nama" type="text" class="form-control" placeholder="Nama Lengkap *" value="" required/>
                             </div>
                             <div class="form-group">
@@ -84,7 +87,7 @@
                            
                            @include('ppdb.content.kuota')
 
-                        <input type="submit" class="btnRegister" value="Daftar" />
+                        <input type="submit" class="btnRegister" value="Daftar"/>
                     </div>
                 </div>
             </div>

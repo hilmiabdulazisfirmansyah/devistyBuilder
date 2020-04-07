@@ -10,7 +10,7 @@
 
 <div class="form-group">
 	<label for="nama" class="col">Password</label>
-	@input(['type' => 'text', 'ukuran' => 'biasa', 'name' => 'password', 'placeholder' => 'Password', 'id' => 'password'])
+	<input type="password" name="password" id="password" placeholder="Password" required class="form-control form-control">
 </div>
 
 <div class="form-group">

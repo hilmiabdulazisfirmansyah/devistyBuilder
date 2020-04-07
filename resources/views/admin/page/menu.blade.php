@@ -126,10 +126,10 @@ $tables2 = new \App\Submenu;
   $('select').on('change', function(){
     if ($(this).val() != '1') {
       $('.submenu').show();
-      $('.link').hide();
-      $('#link').val('#');
     }else{
       $('.submenu').hide();
+      $('.link').show();
+
     }
   });
 
@@ -222,16 +222,12 @@ $tables2 = new \App\Submenu;
       $('.submenu').hide();
   });
 
-  $('#icp_submenu').on('change', function(e) {
-      $('#submenuicon1').val(e.icon);
+  $('.icp_submenu').on('change', function(e) {
+      $('.icp_submenu_val').val(e.icon);
   });
 
-  $('#icp_menu').on('change', function(e) {
-      $('.icp').val(e.icon);
-  });
-
-  $('button[id=icp_menu]').on('change', function(e) {
-      $('.icp').val(e.icon);
+  $('.icp_menu').on('change', function(f) {
+      $('.icp_menu_val').val(f.icon);
   });
 
 </script>

@@ -31,7 +31,7 @@ Route::group(['prefix' => '/'], function(){
 
 Route::resource('admin', 'AdminController')->middleware('auth');
 Route::resource('users', 'AdminController');
-Route::resource('guru', 'AdminController');
+// Route::resource('guru', 'AdminController');
 
 
 Route::group(['prefix' => 'admin'], function (){
@@ -40,6 +40,9 @@ Route::group(['prefix' => 'admin'], function (){
 		Route::resource('menus', 'MenuController');
 		Route::resource('submenus', 'SubmenuController');
 	});
+
+	Route::resource('guru','GuruController');
+	Route::GET('guru/dapodik','GuruController@tarik')->name('guru.tarik');
 
 	Route::group(['prefix' => 'users'], function(){
 		Route::resource('users','UserController');

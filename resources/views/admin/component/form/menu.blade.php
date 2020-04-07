@@ -24,9 +24,9 @@
 	<label for="submenuicon" class="col">Sub Menu Icon</label>
 	<div class="input-group">
 		<span class="input-group-prepend">
-			<button id="icp_submenu" class="btn btn-info" data-icon="fas fa-map-marker-alt" role="iconpicker" data-rows="3" data-cols="6" data-selected-class="btn-danger" data-unselected-class="btn-info"></button>
+			<button id="icp_submenu" class="btn btn-info icp_submenu" data-icon="fas fa-map-marker-alt" role="iconpicker" data-rows="3" data-cols="6" data-selected-class="btn-danger" data-unselected-class="btn-info"></button>
 		</span>
-		@input(['type' => 'icon-picker', 'ukuran' => 'biasa', 'name' => 'submenuicon', 'placeholder' => 'Sub Menu Icon', 'id' => 'submenuicon1'])
+		<input data-placement="bottomRight" class="form-control icp icp-auto icp_submenu_val" type="text" name="submenuicon" placeholder="Icon Sub Menu" required autofocus/>
 	</div>
 </div>
 
@@ -34,9 +34,9 @@
 	<label for="icon" class="col">Icon</label>
 	<div class="input-group">
 		<span class="input-group-prepend">
-			<button id="icp_menu" class="btn btn-info" data-icon="fas fa-map-marker-alt" role="iconpicker" data-rows="3" data-cols="6" data-selected-class="btn-danger" data-unselected-class="btn-info"></button>
+			<button id="icp_menu" class="btn btn-info icp_menu" data-icon="fas fa-map-marker-alt" role="iconpicker" data-rows="3" data-cols="6" data-selected-class="btn-danger" data-unselected-class="btn-info"></button>
 		</span>
-		@input(['type' => 'icon-picker', 'ukuran' => 'biasa', 'name' => 'icon', 'placeholder' => 'Icon', 'id' => 'icon'])
+		<input data-placement="bottomRight" class="form-control icp icp-auto icp_menu_val" type="text" name="icon" placeholder="Icon Sub Menu" required autofocus/>
 	</div>
 </div>
 

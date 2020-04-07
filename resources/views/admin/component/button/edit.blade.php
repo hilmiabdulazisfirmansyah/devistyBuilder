@@ -9,5 +9,5 @@
 @break
 
 @default
-<button id="edit" type="button" class="btn btn-info fa fa-edit" data-toggle="modal" data-target="{{ $target_edit }}">edit</button>
+<button id="edit" type="button" class="btn btn-info fa fa-edit" data-toggle="modal" data-target="{{ $target_edit }}"></button>
 @endswitch

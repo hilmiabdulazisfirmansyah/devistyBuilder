@@ -81,6 +81,15 @@ return [
             'password'  => env('DB_PASSWORD_SMK'),
         ],
 
+        'dapodik' => [
+            'driver'    => env('DB_CONNECTION_DP'),
+            'host'      => env('DB_HOST_DP'),
+            'port'      => env('DB_PORT_DP'),
+            'database'  => env('DB_DATABASE_DP'),
+            'username'  => env('DB_USERNAME_DP'),
+            'password'  => env('DB_PASSWORD_DP'),
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),

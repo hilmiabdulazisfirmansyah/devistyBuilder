@@ -30,11 +30,10 @@
 <script src="{{ asset('adminLTE/dist/js/adminlte.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('adminLTE/dist/js/pages/dashboard.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('adminLTE/dist/js/pages/dashboard.js') }}"></script>
 {{-- selec2 --}}
 <script src="{{ asset('adminLTE/plugins/select2/js/select2.full.min.js') }}"></script>
 {{-- icon picker --}}
 <script type="text/javascript" src="{{ asset('iconpicker/js/bootstrap-iconpicker.bundle.min.js') }}"></script>
 {{-- Standalone LFM --}}
  <script src="{{ asset('/vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
+ <script src="{{ asset('datepicker/js/bootstrap-datepicker.js') }}"></script>
