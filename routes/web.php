@@ -26,6 +26,20 @@ Route::group(['prefix' => '/'], function(){
 	});
 
 	Route::resource('ppdb', 'PpdbController');
+
+	Route::GET('anime', function(){
+		return View('anime.index');
+	});
+
+	Route::get('akun', function(){
+		return view('test.akun.index');
+	});
+
+	Route::POST('akun', function(Request $request){
+		$nama = $request->input('nama');
+		return view('test.akun',compact('nama'));
+	})->name('cari.akun');
+
 });
 
 
@@ -225,7 +239,3 @@ Route::get('icon', function(){
 	return View('test.iconpicker');
 });
 
-Route::get('akun/{nama}', function($nama){
-	$nama = $nama;
-	return view('test.akun',compact('nama'));
-});
