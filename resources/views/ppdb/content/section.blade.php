@@ -58,14 +58,14 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input name="no_hp" type="text" class="form-control" placeholder="Nomor Handphone *" value="" required/>
+                                <input name="no_hp" type="text" class="form-control" placeholder="Nomor Handphone *" value=""/>
                             </div>
                             <div class="form-group">
                                 <input name="asal_sekolah" type="text" name="txtEmpPhone" class="form-control" placeholder="Asal Sekolah *" value="" required/>
                             </div>
 
                             <div class="form-group">
-                                <input name="nama_ayah" type="text" name="txtEmpPhone" class="form-control" placeholder="Nama Ayah *" value="" required/>
+                                <input name="nama_ayah" type="text" name="txtEmpPhone" class="form-control" placeholder="Nama Ayah *" value=""/>
                             </div> 
 
                             <div class="form-group">
