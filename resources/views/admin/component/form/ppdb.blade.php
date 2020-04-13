@@ -5,7 +5,7 @@
 
 <div class="form-group">
 	<label for="nama" class="col">NISN</label>
-	<input id="nisn" class="form-control" type="text" name="nisn" placeholder="NISN" required/>
+	<input id="nisn" class="form-control" type="text" name="nisn" placeholder="NISN"/>
 </div>
 
 <div class="form-group">
