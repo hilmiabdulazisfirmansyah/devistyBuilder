@@ -23,7 +23,7 @@
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input name="nisn" type="text" class="form-control" placeholder="NISN *" value="" required/>
+                                <input name="nisn" type="text" class="form-control" placeholder="NISN *" value=""/>
                             </div>
                             <div class="form-group">
                                 <input name="nama" type="text" class="form-control" placeholder="Nama Lengkap *" value="" required/>
