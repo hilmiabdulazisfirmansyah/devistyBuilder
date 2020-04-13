@@ -12,7 +12,6 @@
 @include('ppdb.js.default')
 
 <script type="text/javascript">
-	location.reload(true);
 	$.ajaxSetup({
 		headers: {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
