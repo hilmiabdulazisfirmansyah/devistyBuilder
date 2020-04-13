@@ -51,7 +51,7 @@
 
 <div class="form-group">
 	<label for="nama" class="col">No Handphone</label>
-	@input(['type' => 'text', 'ukuran' => 'biasa', 'name' => 'no_hp', 'placeholder' => 'Nomor Handphone', 'id' => 'no_hp'])
+	<input id="no_hp" name="no_hp" type="text" class="form-control"  placeholder="Nomor Handphone" value=""/>
 </div>
 
 <div class="form-group">
