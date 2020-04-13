@@ -12,6 +12,7 @@
 @include('ppdb.js.default')
 
 <script type="text/javascript">
+	location.reload(true);
 	$.ajaxSetup({
 		headers: {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -30,12 +31,12 @@
 		$.ajax({
 			url: get_url,
 			method: "GET",
-      		data:{ppdb:jurusan},
-      		dataType:"json",
-      		success:function(data){
-      			$('#laki').val(data.laki);
-      			$('#perempuan').val(data.perempuan);
-      		}
+			data:{ppdb:jurusan},
+			dataType:"json",
+			success:function(data){
+				$('#laki').val(data.laki);
+				$('#perempuan').val(data.perempuan);
+			}
 		});
 	});
 </script>
