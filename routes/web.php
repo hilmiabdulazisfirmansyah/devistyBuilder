@@ -50,6 +50,8 @@ Route::resource('users', 'AdminController');
 
 Route::group(['prefix' => 'admin'], function (){
 
+	Route::get('ppdb/export', 'PpdbController@export');
+
 	Route::group(['prefix' => 'settings'], function(){
 		Route::resource('menus', 'MenuController');
 		Route::resource('submenus', 'SubmenuController');

@@ -55,6 +55,10 @@ function jumlah_pendaftar($jurusan){
       @input(['type' => 'button','action' => 'tambah-modal', 'ukuran' => 'kecil', 'name' => 'Tambah Calon PD', 'target' => '#tambahcpd'])
     </div>
 
+    <div class="form-group col-lg-2 pt-5">
+      <a href="{{ url('admin/ppdb/export') }}" class="btn btn-primary">Export Excel</a>
+    </div>
+
     <section class="col-lg-12 connectedSortable">
       <!-- Custom tabs (Charts with tabs)-->
 
